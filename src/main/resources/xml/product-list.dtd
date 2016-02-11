@@ -1,0 +1,17 @@
+<!DOCTYPE categories [
+        <!ELEMENT categories (category+)>
+        <!ELEMENT category (name, subCategory+)>
+        <!ELEMENT subCategory (name, product+)>
+        <!ELEMENT product (name, provider, model, dateOfIssue, notInStock, color, price)>
+
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT provider (#PCDATA)>
+        <!ELEMENT model (#PCDATA)>
+        <!ELEMENT dateOfIssue (#PCDATA)>
+        <!ELEMENT notInStock (&true;|&false;) >
+        <!ELEMENT color (#PCDATA) >
+        <!ELEMENT price (#PCDATA)>
+
+        <!ENTITY true "true">
+        <!ENTITY false "false">
+        ]>
