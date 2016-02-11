@@ -1,8 +1,6 @@
 package com.epam.alex.model;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
