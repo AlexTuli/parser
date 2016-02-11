@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<categories
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="product-list.xsd">
+    <category>
+      <name>Name</name>
+      <subCategory>
+        <name>Some name</name>
+        <product>
+            <name>Name</name>
+            <provider>str1234</provider>
+            <model>hh134</model>
+            <dateOfIssue>10/15/2015</dateOfIssue>
+            <notInStock>true</notInStock>
+            <color>str1234</color>
+            <price>123.45</price>
+        </product>
+    </subCategory>
+     </category>
+</categories>
