@@ -1,0 +1,72 @@
+div.header {
+    text-align: center;
+    background-color: #171717;
+    color: whitesmoke;
+    font-family: "Lucida Sans", sans-serif;
+    padding: 10px;
+    clear: both;
+}
+
+div.body-wrapper {
+    font-family: sans-serif;
+    clear: both;
+    background-color: darkgrey;
+    color: whitesmoke;
+}
+
+div.menu {
+    text-align: center;
+    color: whitesmoke;
+    background-color: dimgrey;
+    font-size: larger;
+    font-family: "Eras Bold ITC", serif;
+    float: left;
+    padding: 25px;
+    clear: left;
+}
+
+div.footer {
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    background-color: #171717;
+    color: whitesmoke;
+    font-family: Arial, sans-serif;
+    font-size: large;
+}
+
+body {
+    margin: 0;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+div.body {
+    text-align: center;
+    padding: 5px;
+    font-family: cursive;
+    font-size: X-large;
+}
+
+h1 {
+    letter-spacing: 3px;
+    line-height: 15px;
+}
