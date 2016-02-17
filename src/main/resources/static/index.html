@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="lib/jquery-1.12.0.js"></script>
     <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
 <body style="background-color: ;">
     <div class="container-fluid text-center bg1">
@@ -27,46 +29,36 @@
         </div>
             <div class="collapse navbar-collapse" id="parserNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#sax-parser">SAX</a></li>
-                    <li><a href="#dom-parser">DOM</a></li>
-                    <li><a href="#stax-parser">StAx</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">link</a></li>
+                    <li><a href="#">About</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     
     <div class="bg-body jumbotron text-center">
-        <h2>Choose the parser</h2><br/>
+        <h2>Choose the parser</h2><br/>        
         <div class="btn-group">
-            <button type="button" class="btn btn-primary" onclick="window.location = '#sax-parser'">SAX</button>
-            <button type="button" class="btn btn-primary" onclick="window.location = '#dom-parser'">DOM</button>
-            <button type="button" class="btn btn-primary" onclick="window.location = '#stax-parser'">StAX</button>
+            <button type="button" class="btn btn-primary" onclick="chooseParser('sax')">SAX</button>
+            <button type="button" class="btn btn-primary" onclick="chooseParser('dom')">DOM</button>
+            <button type="button" class="btn btn-primary" onclick="chooseParser('stax')">StAX</button>
         </div>
     </div>
-    
-    <!-- TODO: create collapse block for parsers -->
-    <div id="sax-parser" class="container jumbotron">
-        <!-- todo: need to set correct action<br/> -->
-        SAX Parser:
-        <form method="post" enctype="multipart/form-data" action="/saxParser">
-        <input class="btn btn-primary" type="file" name="file"> <br/>           
-        <input class="btn btn-success btn-block" type="submit" value="Upload">       
-        </form>
-    </div>
-    <div id="dom-parser" class="container jumbotron">
-        DOM Parser:
-        <form method="post" enctype="multipart/form-data" action="/domParser">        
-        <input class="btn btn-primary" type="file" name="file"><br/> <input class="btn btn-success btn-block" type="submit" value="Upload">
+    <div id="parser" class="container jumbotron collapse">
+        <!-- todo: need to set correct action -->
+        <p class="text-center" id="parser-name"></p>
+        <form id="parser-form" method="post" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+        <input class="form-control" type="file" name="file" >
+            <span class="input-group-btn">
+                  <input class="btn btn-success" type="submit" value="Upload"> 
+            </span>
+         </div>
         
         </form>
-    </div>
-    <div id="stax-parser" class="container jumbotron text-center">
-        StAX Parser:<br/>
-        <form method="post" enctype="multipart/form-data" action="/staxParser">
-        <input class="btn btn-primary" type="file" name="file" ><br/>
-        <input class="btn btn-success btn-block" type="submit" value="Upload">      
-        </form>
-    </div>       
+    </div>   
+    
     <div class="container-fluid bg1">
         <footer class="container-fluid text-center">Copyright &copy; EPAM 2016. All rights reserved.</footer>
     </div>
