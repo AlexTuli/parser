@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="parserApp">
 <head>
     <meta charset="UTF-8">
     <title>PARSER | Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <script src="lib/jquery-1.12.0.js"></script>
-    <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-    <script src="lib/angular.min.js"></script>
-    <script src="js/scripts.js"></script>
+
 </head>
-<body style="background-color: ;">
+<body ng-controller="bodyController as body">
+   <script src="lib/jquery-1.12.0.js"></script>
+   <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+   <script src="lib/angular.js"></script>
+   <script src="js/angularApp.js"></script>
+   <script src="js/scripts.js"></script>
+
     <div class="container-fluid text-center bg1">
         <h1>Welcome to XML Parser system</h1>
-    </div>   
-        
-    
+    </div>
+
     <nav class="navbar navbar-default">
         <div class="container">
         <div class="navbar-header">
@@ -29,16 +31,25 @@
         </div>
             <div class="collapse navbar-collapse" id="parserNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">link</a></li>
-                    <li><a href="#">link</a></li>
-                    <li><a href="#">About</a></li>
+                    <li ng-class="active : body.isSelected(1)"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
+                    <li "active : body.isSelected(2)"><a ng-click="body.selectBody(2)" href="">About</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
+    <div ng-show="body.isSelected(2)">
+      <div class="container jumbotron">
+         <p>XML parser was made by Alexander Bocharnikov in RD laborotory, while
+         interning. Here I used a many frameworks that was a not familiar to me.
+      It is bootstrap, AngularJS, Spring Boot, Spring Container. Also I start to
+      use JavaScript here, and try to implement good designed CSS.</p>
+      </div>
+    </div>
+
+    <div ng-show="body.isSelected(1)">
     <div class="bg-body jumbotron text-center">
-        <h2>Choose the parser</h2><br/>        
+        <h2>Choose the parser</h2><br/>
         <div class="btn-group">
             <button type="button" class="btn btn-primary" onclick="chooseParser('sax')">SAX</button>
             <button type="button" class="btn btn-primary" onclick="chooseParser('dom')">DOM</button>
@@ -49,19 +60,18 @@
         <!-- todo: need to set correct action -->
         <p class="text-center" id="parser-name"></p>
         <form id="parser-form" method="post" enctype="multipart/form-data">
-        <div class="input-group input-group-lg">
+        <div class="input-group input-group">
         <input class="form-control" type="file" name="file" >
             <span class="input-group-btn">
-                  <input class="btn btn-success" type="submit" value="Upload"> 
+                  <input class="btn btn-success" type="submit" value="Upload">
             </span>
          </div>
-        
         </form>
-    </div>   
-    
+    </div>
+    </div>
     <div class="container-fluid bg1">
         <footer class="container-fluid text-center">Copyright &copy; EPAM 2016. All rights reserved.</footer>
     </div>
-    
+
 </body>
 </html>
