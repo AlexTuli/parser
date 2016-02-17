@@ -17,7 +17,7 @@ import java.io.IOException;
  *
  * @author Bocharnikov Alexander
  */
-@Controller
+//@Controller
 public class FileUploadController {
 
     @RequestMapping(value="/upload", method=RequestMethod.GET)

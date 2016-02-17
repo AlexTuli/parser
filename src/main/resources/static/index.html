@@ -31,8 +31,9 @@
         </div>
             <div class="collapse navbar-collapse" id="parserNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="active : body.isSelected(1)"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
-                    <li "active : body.isSelected(2)"><a ng-click="body.selectBody(2)" href="">About</a></li>
+                    <li><button type="button" class="btn btn-primary" onclick="httpGet('/sax')">Send Request</button></li>
+                    <li ng-class="{active:body.isSelected(1)}"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
+                    <li ng-class="{active:body.isSelected(2)}"><a ng-click="body.selectBody(2)" href="">About</a></li>
                 </ul>
             </div>
         </div>
