@@ -31,7 +31,6 @@
         </div>
             <div class="collapse navbar-collapse" id="parserNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button type="button" class="btn btn-primary" onclick="httpGet('/sax')">Send Request</button></li>
                     <li ng-class="{active:body.isSelected(1)}"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
                     <li ng-class="{active:body.isSelected(2)}"><a ng-click="body.selectBody(2)" href="">About</a></li>
                 </ul>
@@ -39,11 +38,11 @@
         </div>
     </nav>
 
-    <div ng-show="body.isSelected(2)">
+   <div ng-show="body.isSelected(2)">
       <div class="container jumbotron">
-         <p>XML parser was made by Alexander Bocharnikov in RD laborotory, while
-         interning. Here I used a many frameworks that was a not familiar to me.
-      It is bootstrap, AngularJS, Spring Boot, Spring Container. Also I start to
+         <p>XML parser was made by Alexander Bocharnikov in RD laboratory, while
+         intern. Here I used a many frameworks that was a not familiar to me.
+             It is bootstrap, AngularJS, Spring Boot, Spring Container. Also I start to
       use JavaScript here, and try to implement good designed CSS.</p>
       </div>
     </div>
@@ -58,11 +57,10 @@
         </div>
     </div>
     <div id="parser" class="container jumbotron collapse">
-        <!-- todo: need to set correct action -->
         <p class="text-center" id="parser-name"></p>
-        <form id="parser-form" method="post" enctype="multipart/form-data">
+        <form id="parser-form" method="post" enctype="multipart/form-data" action="/sax">
         <div class="input-group input-group">
-        <input class="form-control" type="file" name="file" >
+        <input class="form-control" type="file" name="file" ng-model="">
             <span class="input-group-btn">
                   <input class="btn btn-success" type="submit" value="Upload">
             </span>
