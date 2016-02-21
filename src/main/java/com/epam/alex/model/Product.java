@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Created on 2/11/2016.
@@ -20,4 +21,5 @@ public class Product {
     private Boolean notInStock;
     private String color;
     private Double price;
+
 }
