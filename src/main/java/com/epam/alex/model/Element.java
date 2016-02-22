@@ -58,4 +58,18 @@ public class Element {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("\n|Name of the element: ");
+        sb.append(this.name);
+        if (this.content != null && !content.isEmpty()) {
+            sb.append(". Value of this node: ").append(content);
+        }
+        if (!childElements.isEmpty()) {
+            sb.append(". It has a next child elements: ").append(childElements.toString());
+        }
+        sb.append("|\n");
+        return sb.toString();
+    }
 }

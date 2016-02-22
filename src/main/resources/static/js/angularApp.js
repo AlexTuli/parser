@@ -11,6 +11,31 @@ app.controller('bodyController', function() {
    }
 });
 
+    app.controller('parserController', [ '$http', function($http){
+        var vm = this;
+        vm.answer = [];
+        vm.myForm = {};
+        vm.makeRequest = function(){
+            $http({
+                method: "POST",
+                url: "/sax",
+                headers: {
+                    'Content-Type': undefined
+                },
+                data: vm.myForm
+            }).then(function successCallback(response) {
+                vm.answer = response.data;
+            }, function errorCallback(response) {
+                vm.answer = response.statusText;
+            });
+        };
+        vm.update = function(){
+            vm.makeRequest();
+        };
+
+
+    }]);
+
     app.controller('saxParserRequestController', [ '$http', function($http){
         var vm = this;
         vm.answer = [];
@@ -29,6 +54,12 @@ app.controller('bodyController', function() {
         this.typeOfParser = "sax";
         this.setTypeOfParser = function(newType){
             this.typeOfParser = newType;
+        }
+    });
+    //This is transform JSON into something pretty :D
+    app.filter('pretty', function(){
+        return function (json) {
+            return JSON.stringify(json, undefined, 2)
         }
     });
 

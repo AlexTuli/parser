@@ -9,12 +9,14 @@ public class ParserFactory {
 
     private final static ParserFactory INSTANCE = new ParserFactory();
 
-    public ParserFactory getInstance() {
+    public static ParserFactory getInstance() {
         return INSTANCE;
     }
 
     public MyDomParser getMyDomParser() {
         return new MyDomParser();
     }
+
+    public MySaxParser getMySaxParser() {return new MySaxParser();}
 
 }
