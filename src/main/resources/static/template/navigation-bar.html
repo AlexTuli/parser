@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#parserNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">MAIN PAGE</a>
+        </div>
+        <div class="collapse navbar-collapse" id="parserNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{active:body.isSelected(1)}"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
+                <li ng-class="{active:body.isSelected(2)}"><a ng-click="body.selectBody(2)" href="">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

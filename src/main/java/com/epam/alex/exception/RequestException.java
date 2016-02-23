@@ -5,7 +5,7 @@ package com.epam.alex.exception;
  *
  * @author Bocharnikov Alexander
  */
-public class RequestException extends Exception {
+public class RequestException extends RuntimeException {
 
     public RequestException() {
         super();

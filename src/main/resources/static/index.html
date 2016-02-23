@@ -15,28 +15,10 @@
    <script src="js/angularApp.js"></script>
    <script src="js/scripts.js"></script>
 
-    <div class="container-fluid text-center bg1">
-        <h1>Welcome to XML Parser system</h1>
+    <div ng-include="'template/header.html'" class="container-fluid text-center bg1">
     </div>
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#parserNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">MAIN PAGE</a>
-        </div>
-            <div class="collapse navbar-collapse" id="parserNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{active:body.isSelected(1)}"><a ng-click="body.selectBody(1)" href="">Choose parser</a></li>
-                    <li ng-class="{active:body.isSelected(2)}"><a ng-click="body.selectBody(2)" href="">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+   <navigation-bar></navigation-bar>
 
    <div ng-show="body.isSelected(2)">
       <div class="container jumbotron">
@@ -51,26 +33,14 @@
     <div class="bg-body jumbotron text-center">
         <h2>Choose the parser</h2><br/>
         <div class="btn-group">
-            <button type="button" class="btn btn-primary" onclick="chooseParser('sax')">SAX</button>
+            <button type="button" class="btn btn-primary" onclick="body.selectParser">SAX</button>
             <button type="button" class="btn btn-primary" onclick="chooseParser('dom')">DOM</button>
             <button type="button" class="btn btn-primary" onclick="chooseParser('stax')">StAX</button>
         </div>
     </div>
-    <div id="parser" class="container jumbotron collapse">
-        <p class="text-center" id="parser-name"></p>
-        <form id="parser-form" method="post" enctype="multipart/form-data" action="/parser">
-        <div class="input-group input-group">
-            <input id="type" name="type" type="hidden" value="sax">
-            <input class="form-control" type="file" name="file" ng-model="">
-            <span class="input-group-btn">
-                  <input class="btn btn-success" type="submit" value="Upload">
-            </span>
-         </div>
-        </form>
+    <parser-form></parser-form>
     </div>
-    </div>
-    <div class="container-fluid bg1">
-        <footer class="container-fluid text-center">Copyright &copy; EPAM 2016. All rights reserved.</footer>
+    <div ng-include="'template/footer.html'" class="container-fluid bg1">
     </div>
 
 </body>

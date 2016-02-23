@@ -1,0 +1,21 @@
+<div id="parser" class="container jumbotron">
+    <p class="text-center" id="parser-name">SAX parser</p>
+    <form id="parser-form" enctype="multipart/form-data" novalidate>
+        <div class="input-group input-group">
+            <input ng-hide="false" ng-value="'sax'" ng-model="parser.myForm.type" type="radio" name="sax" value="sax">
+            <input ng-hide="true" ng-value="'dom'" ng-model="parser.myForm.type" type="radio" name="dom" value="dom">
+            <input ng-hide="true" ng-value="'stax'" ng-model="parser.myForm.type" type="radio" name="stax" value="stax">
+            <input ng-model="parser.file" class="form-control" type="file" name="file">
+            <span class="input-group-btn">
+                  <input ng-click="parser.makeRequest()" class="btn btn-success" type="submit" value="Upload">
+            </span>
+        </div>
+        <div class="container jumbotron">
+            <p>This is a type of parser: {{parser.myForm.type}}</p>
+            <p>This is file: {{parser.myForm.file}}</p>
+        </div>
+        <div class="container jumbotron">
+            {{parser.answer}}
+        </div>
+    </form>
+</div>

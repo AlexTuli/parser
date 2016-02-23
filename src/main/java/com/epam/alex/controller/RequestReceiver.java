@@ -1,4 +1,4 @@
-package com.epam.alex;
+package com.epam.alex.controller;
 
 import com.epam.alex.exception.FileUploadException;
 import com.epam.alex.exception.ParserException;
@@ -29,15 +29,16 @@ public class RequestReceiver {
     public static final String DOM = "dom";
     public static final String STAX = "stax";
 
-    @RequestMapping(value = {"/sax", "/stax", "/dom"}, method = RequestMethod.GET)
-    public @ResponseBody String sayHello() {
-        return "Please, upload the file";
-    }
 
+    /**
+     *
+     * @param file - xml to parse
+     * @param parserType - type of the parser
+     * @return Element object
+     */
     @RequestMapping(value = {"/sax", "/stax", "/dom", "/parser"}, method = RequestMethod.POST)
     public @ResponseBody Element sayHello(@RequestParam("file") MultipartFile file,
-                                          @RequestParam(value = "type") String parserType)
-            throws RequestException {
+                                          @RequestParam(value = "type") String parserType) {
         log.debug("Request received. Request param is " + parserType);
         FileReader reader = new FileUploader();
         try {
