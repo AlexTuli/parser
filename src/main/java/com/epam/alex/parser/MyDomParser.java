@@ -1,7 +1,6 @@
 package com.epam.alex.parser;
 
 import com.epam.alex.exception.ParserException;
-import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -27,11 +26,8 @@ public class MyDomParser implements Parser {
         Element rootElement = null;// Returns the root element
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder;
-            Document doc = null;
-            dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(inputStream);
-            assert doc != null;
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputStream);
             rootElement = doc.getDocumentElement();
             rootElement.normalize();
         } catch (ParserConfigurationException | SAXException | IOException ignored) {
