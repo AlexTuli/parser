@@ -13,16 +13,16 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Deque;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created on 2/22/2016.
  *
  * @author Bocharnikov Alexander
  */
-public class MySaxParser extends DefaultHandler implements Parser  {
+public class MySaxParser extends DefaultHandler implements Parser {
 
     private MyHandler myHandlerInstance;
 
@@ -51,51 +51,61 @@ public class MySaxParser extends DefaultHandler implements Parser  {
         }
     }
 
-    private class MyHandler extends  DefaultHandler {
+    private class MyHandler extends DefaultHandler {
 
+        private StringBuilder content;
         private Element currentElement;
         private Deque<Element> deque = new ArrayDeque<>();
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-            log.debug("This is start element: " + qName);
             if (currentElement != null) {
                 deque.add(currentElement);
             }
-            if (qName.equalsIgnoreCase("price")) {
-                System.out.println("hello");
-            }
             currentElement = new Element();
             currentElement.setName(qName);
+            extractAndSetAttributes(attributes);
+            content = new StringBuilder();
+        }
+
+        /**
+         * Extract and set attributes to <code>currentElement</code>
+         */
+        private void extractAndSetAttributes(Attributes attributes) {
+            Map<String, String> result = null;
+            for (int i = 0; i < attributes.getLength(); i++) {
+                result = new HashMap<>();
+                String attributeName = attributes.getQName(i);
+                String attributeValue = attributes.getValue(i);
+                result.put(attributeName, attributeValue);
+            }
+            currentElement.setAttributes(result);
         }
 
         @Override
         public void characters(char[] ch, int start, int length) throws SAXException {
-            String content = new String(ch, start, length);
-            content = content.trim();
-            if (!content.isEmpty()) {
-                log.debug("This is characters: " + new String(ch, start, length));
-                currentElement.setContent(content);
+            if (content != null) {
+                content.append(ch, start, length);
             }
         }
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-            log.debug("This is end element: " + qName);
+            if (content != null && content.length() > 0) {
+                String temp = content.toString().trim();
+                currentElement.setContent(temp);
+                content = null;
+            }
             if (deque.peekLast() != null) {
                 deque.peekLast().addChildElement(currentElement);
                 currentElement = deque.pollLast();
             }
         }
 
-        protected Element getCurrentElement() {
+        private Element getCurrentElement() {
             return currentElement;
         }
 
-        @Override
-        public void endDocument() throws SAXException {
-            log.debug("Document is ended. We have next elements:\n" + currentElement.toString());
-        }
     }
 }
 
