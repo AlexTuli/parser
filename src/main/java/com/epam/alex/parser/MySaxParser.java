@@ -33,7 +33,7 @@ public class MySaxParser extends DefaultHandler implements Parser {
     private static final Logger log = Logger.getLogger(MySaxParser.class);
 
     @Override
-    public Element doParse(InputStream inputStream) throws ParserException {
+    public Element parse(InputStream inputStream) throws ParserException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
             SAXParser parser = factory.newSAXParser();
@@ -55,7 +55,11 @@ public class MySaxParser extends DefaultHandler implements Parser {
 
         private StringBuilder content;
         private Element currentElement;
-        private Deque<Element> deque = new ArrayDeque<>();
+        private Deque<Element> deque;
+
+        public MyHandler() {
+            deque = new ArrayDeque<>();
+        }
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

@@ -10,6 +10,6 @@ import java.io.InputStream;
  */
 public interface Parser {
 
-    Element doParse(InputStream inputStream) throws ParserException;
+    Element parse(InputStream inputStream) throws ParserException;
 
 }

@@ -19,4 +19,5 @@ public class ParserFactory {
 
     public MySaxParser getMySaxParser() {return new MySaxParser();}
 
+    public MyStAXParser getMyStAXParser() {return  new MyStAXParser();}
 }

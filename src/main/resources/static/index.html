@@ -58,9 +58,10 @@
     </div>
     <div id="parser" class="container jumbotron collapse">
         <p class="text-center" id="parser-name"></p>
-        <form id="parser-form" method="post" enctype="multipart/form-data" action="/sax">
+        <form id="parser-form" method="post" enctype="multipart/form-data" action="/parser">
         <div class="input-group input-group">
-        <input class="form-control" type="file" name="file" ng-model="">
+            <input id="type" name="type" type="hidden" value="sax">
+            <input class="form-control" type="file" name="file" ng-model="">
             <span class="input-group-btn">
                   <input class="btn btn-success" type="submit" value="Upload">
             </span>
